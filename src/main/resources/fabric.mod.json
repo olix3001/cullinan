@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "cullinanclient",
+  "version": "${version}",
+  "name": "CullinanClient",
+  "description": "",
+  "authors": [
+    "olix3001",
+    "jj15",
+    "AlphaX",
+    "birdinand"
+  ],
+  "contact": {
+    "repo": "https://github.com/olix3001/cullinan"
+  },
+  "license": "MIT",
+  "icon": "assets/CullinanClient/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.cullinan.cullinanclient.client.CullinanClientClient"
+    ],
+    "main": [
+      "com.cullinan.cullinanclient.CullinanClient"
+    ]
+  },
+  "mixins": [
+    "CullinanClient.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.11",
+    "fabric": "*",
+    "minecraft": "1.18.1"
+  }
+}
