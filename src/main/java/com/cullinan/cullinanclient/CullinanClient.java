@@ -1,5 +1,6 @@
 package com.cullinan.cullinanclient;
 
+import com.cullinan.cullinanclient.hack.HackList;
 import net.fabricmc.api.ModInitializer;
 
 public class CullinanClient implements ModInitializer {
@@ -10,6 +11,7 @@ public class CullinanClient implements ModInitializer {
     @Override
     public void onInitialize() {
         instance = this;
+        HackList.getInstance(); //initialize hacklist
     }
 
     public static CullinanClient getInstance() {
