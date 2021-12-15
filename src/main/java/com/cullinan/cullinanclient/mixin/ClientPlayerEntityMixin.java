@@ -34,7 +34,6 @@ public class ClientPlayerEntityMixin extends AbstractClientPlayerEntity {
             ordinal = 0), method = "tick()V")
     private void onTick(CallbackInfo ci)
     {
-        System.out.println("TEST");
         CullinanEvents.fire(TickListener.TickEvent.INSTANCE);
     }
 
