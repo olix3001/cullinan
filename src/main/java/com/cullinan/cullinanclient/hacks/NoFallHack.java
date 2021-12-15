@@ -22,7 +22,7 @@ public class NoFallHack extends Hack implements TickListener {
     public NoFallHack() {
         super("NoFall");
         setCategory(HackCategory.MOVEMENT);
-        //setEnabled(true); // uncomment for testing purposes while there is no gui
+        setEnabled(true); // uncomment for testing purposes while there is no gui
     }
 
     @Override
