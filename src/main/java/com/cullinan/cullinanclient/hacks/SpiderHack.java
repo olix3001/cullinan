@@ -8,35 +8,37 @@
 
 package com.cullinan.cullinanclient.hacks;
 
+import com.cullinan.cullinanclient.CullinanClient;
 import com.cullinan.cullinanclient.SearchTags;
 import com.cullinan.cullinanclient.event.CullinanEvents;
 import com.cullinan.cullinanclient.events.TickListener;
 import com.cullinan.cullinanclient.hack.Hack;
 import com.cullinan.cullinanclient.hack.HackCategory;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
+import net.minecraft.util.math.Vec3d;
 
-@SearchTags({"no fall"})
-public class NoFallHack extends Hack implements TickListener {
+@SearchTags({"Spider", "Climb"})
+public class SpiderHack extends Hack implements TickListener {
 
-    public NoFallHack() {
-        super("NoFall");
+    public SpiderHack() {
+        super("Spider");
         setCategory(HackCategory.MOVEMENT);
-        setColor(0x00118ab2);
+        setColor(0x0003045e);
         setEnabled(true); // uncomment for testing purposes while there is no gui
+        // TODO: Add speed option
     }
 
     @Override
     public void onTick() {
-        ClientPlayerEntity player = MC.player;
-        if(player.fallDistance <= (player.isFallFlying() ? 1 : 2))
+        ClientPlayerEntity player = CullinanClient.MINECRAFT.player;
+        if (!player.horizontalCollision)
             return;
 
-        if(player.isFallFlying() && player.isSneaking()
-                && !(player.getVelocity().y < -0.5))
+        Vec3d vel = player.getVelocity();
+        if (vel.y >= 0.2)
             return;
 
-        player.networkHandler.sendPacket(new PlayerMoveC2SPacket.OnGroundOnly(true));
+        player.setVelocity(vel.x, 0.2, vel.z);
     }
 
     @Override

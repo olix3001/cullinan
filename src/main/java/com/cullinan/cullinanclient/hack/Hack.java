@@ -17,6 +17,7 @@ public class Hack {
     private final String name, description;
     private HackCategory category;
     private boolean enabled = false;
+    private int color = 0x00ff0000;
 
     protected static final MinecraftClient MC = MinecraftClient.getInstance();
 
@@ -25,7 +26,7 @@ public class Hack {
         this.description = "description.cullinan.hack." + name.toLowerCase();
     }
 
-    public int getColor() { return 0x00ff0000; }
+    public int getColor() { return color; }
     public String getName() {
         return name;
     }
@@ -39,6 +40,10 @@ public class Hack {
 
     public HackCategory getCategory() {
         return category;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     protected final void setCategory(HackCategory category) {

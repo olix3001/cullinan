@@ -9,6 +9,7 @@
 package com.cullinan.cullinanclient.hack;
 
 import com.cullinan.cullinanclient.hacks.NoFallHack;
+import com.cullinan.cullinanclient.hacks.SpiderHack;
 import net.minecraft.util.crash.CrashException;
 import net.minecraft.util.crash.CrashReport;
 
@@ -20,6 +21,7 @@ import java.util.TreeMap;
 public class HackList {
 
     public final NoFallHack noFallHack = new NoFallHack();
+    public final SpiderHack spiderHack = new SpiderHack();
 
     private final TreeMap<String, Hack> hacks =
             new TreeMap<>(String::compareToIgnoreCase);
