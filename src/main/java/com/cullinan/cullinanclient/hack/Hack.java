@@ -8,6 +8,9 @@
 
 package com.cullinan.cullinanclient.hack;
 
+import com.cullinan.cullinanclient.CullinanClient;
+import com.cullinan.cullinanclient.gui.HackListHud;
+import com.cullinan.cullinanclient.gui.InGameHud;
 import net.minecraft.client.MinecraftClient;
 
 public class Hack {
@@ -22,6 +25,7 @@ public class Hack {
         this.description = "description.cullinan.hack." + name.toLowerCase();
     }
 
+    public int getColor() { return 0x00ff0000; }
     public String getName() {
         return name;
     }
@@ -55,6 +59,8 @@ public class Hack {
         else
                 onDisable();
 
+        InGameHud hud = CullinanClient.getInstance().getHud();
+        if (hud != null) hud.hackListHud.updateState(this);
         // TODO: Save state
     }
 

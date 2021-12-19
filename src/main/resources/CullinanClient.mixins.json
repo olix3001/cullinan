@@ -4,9 +4,11 @@
   "package": "com.cullinan.cullinanclient.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+
   ],
   "client": [
-    "ClientPlayerEntityMixin"
+    "ClientPlayerEntityMixin",
+    "InGameHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1
