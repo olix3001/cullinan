@@ -14,11 +14,14 @@ import com.cullinan.cullinanclient.event.CullinanEvents;
 import com.cullinan.cullinanclient.events.TickListener;
 import com.cullinan.cullinanclient.hack.Hack;
 import com.cullinan.cullinanclient.hack.HackCategory;
+import com.cullinan.cullinanclient.hack.hackSettings.DoubleSetting;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.math.Vec3d;
 
 @SearchTags({"Spider", "Climb"})
 public class SpiderHack extends Hack implements TickListener {
+
+    public final DoubleSetting speedSetting = new DoubleSetting("speed", "speed that you go up with", this, 0.2);
 
     public SpiderHack() {
         super("Spider");
@@ -35,10 +38,10 @@ public class SpiderHack extends Hack implements TickListener {
             return;
 
         Vec3d vel = player.getVelocity();
-        if (vel.y >= 0.2)
+        if (vel.y >= speedSetting.getValue())
             return;
 
-        player.setVelocity(vel.x, 0.2, vel.z);
+        player.setVelocity(vel.x, speedSetting.getValue(), vel.z);
     }
 
     @Override

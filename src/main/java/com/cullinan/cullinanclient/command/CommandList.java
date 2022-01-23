@@ -8,6 +8,7 @@
 
 package com.cullinan.cullinanclient.command;
 
+import com.cullinan.cullinanclient.commands.SettingsCommand;
 import com.cullinan.cullinanclient.commands.TestCommand;
 import com.cullinan.cullinanclient.commands.ToggleCommand;
 import net.minecraft.util.crash.CrashException;
@@ -22,6 +23,7 @@ public class CommandList {
 
     public TestCommand testCommand = new TestCommand();
     public ToggleCommand toggleCommand = new ToggleCommand();
+    public SettingsCommand settingsCommand = new SettingsCommand();
 
 
     private final TreeMap<String, Command> commands =
@@ -59,7 +61,7 @@ public class CommandList {
         return commands.get(name);
     }
 
-    public Collection<Command> getAllHacks()
+    public Collection<Command> getAllCommands()
     {
         return Collections.unmodifiableCollection(commands.values());
     }

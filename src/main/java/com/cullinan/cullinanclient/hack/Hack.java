@@ -9,15 +9,28 @@
 package com.cullinan.cullinanclient.hack;
 
 import com.cullinan.cullinanclient.CullinanClient;
+import com.cullinan.cullinanclient.command.Command;
+import com.cullinan.cullinanclient.command.CommandList;
 import com.cullinan.cullinanclient.gui.HackListHud;
 import com.cullinan.cullinanclient.gui.InGameHud;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.util.crash.CrashException;
+import net.minecraft.util.crash.CrashReport;
+import net.minecraft.util.crash.CrashReportSection;
+
+import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.TreeMap;
 
 public class Hack {
     private final String name, description;
     private HackCategory category;
     private boolean enabled = false;
     private int color = 0x00ff0000;
+
+    private final TreeMap<String, HackSetting> settings =
+            new TreeMap<>(String::compareToIgnoreCase);
 
     protected static final MinecraftClient MC = MinecraftClient.getInstance();
 
@@ -75,6 +88,17 @@ public class Hack {
 
     public final void doAction() {
         setEnabled(!enabled);
+    }
+
+    public HackSetting getSettingByName(String name) {
+        return settings.get(name);
+    }
+    public void addSetting(HackSetting setting) {
+        settings.put(setting.getName(), setting);
+    }
+    public Collection<HackSetting> getAllSettings()
+    {
+        return Collections.unmodifiableCollection(settings.values());
     }
 
     protected void onEnable() {}
